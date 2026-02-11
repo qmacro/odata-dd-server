@@ -11,6 +11,9 @@ USER node
 RUN npm install -g @sap/cds-dk
 
 WORKDIR /home/node
-COPY northbreeze/ northbreeze/
+COPY . .
+USER root
+RUN chown -R node:node northbreeze
+USER node
 
 CMD ["cds", "watch", "northbreeze"]
