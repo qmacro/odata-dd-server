@@ -1,19 +1,13 @@
 # syntax=docker/dockerfile:1
 
-ARG VARIANT="24"
-FROM mcr.microsoft.com/devcontainers/javascript-node:${VARIANT}
+FROM node:24-alpine
 
-# Install some generally useful tools
-RUN apt-get update && apt-get -y install --no-install-recommends curl git sqlite3
+LABEL org.opencontainers.image.source=https://github.com/qmacro/odata-dd-server
 
 # Install SAP CAP SDK globally
-USER node
 RUN npm install -g @sap/cds-dk
 
-WORKDIR /home/node
+WORKDIR /
 COPY . .
-USER root
-RUN chown -R node:node northbreeze
-USER node
 
 CMD ["cds", "watch", "northbreeze"]

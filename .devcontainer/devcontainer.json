@@ -1,13 +1,9 @@
 {
     "name": "OData Deep Dive Server",
     "build": {
-        "dockerfile": "Dockerfile",
-        "args": {
-            "VARIANT": "24"
-        }
+        "dockerfile": "Dockerfile"
     },
     "forwardPorts": [
         4004
-    ],
-    "remoteUser": "node"
+    ]
 }
